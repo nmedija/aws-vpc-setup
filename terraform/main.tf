@@ -10,7 +10,7 @@ provider "aws" {
 # Create the VPC for the environment
 # ----------------------------------
 module "vpc" {
-    source = "./modules/network/vpc"
+    source = "git@github.com:nmedija/terraform-modules.git//network/vpc"
 
     name = "${var.environment}-vpc"
     cidr = "${var.vpc_cidr}"
@@ -20,7 +20,7 @@ module "vpc" {
 # Public Subnets
 # --------------
 module "public_subnet" {
-    source = "./modules/network/public_subnet"
+    source = "git@github.com:nmedija/terraform-modules.git//network/public_subnet"
 
     subnet_prefix = "public"
     vpc_id = "${module.vpc.vpc_id}"
@@ -29,7 +29,7 @@ module "public_subnet" {
 }
 
 module "nat_gateway" {
-    source = "./modules/network/nat_gateway"
+    source = "git@github.com:nmedija/terraform-modules.git//network/nat_gateway"
     azs = "${keys(var.public_subnets)}"
     public_subnet_ids = "${module.public_subnet.subnet_ids}"
     nat_gateway_count = "${var.nat_gateway_count}"
@@ -43,7 +43,7 @@ resource "aws_egress_only_internet_gateway" "private" {
 }
 
 module "management_subnet" {
-    source = "./modules/network/private_subnet"
+    source = "git@github.com:nmedija/terraform-modules.git//network/private_subnet"
 
     subnet_prefix = "management"
     vpc_id = "${module.vpc.vpc_id}"
@@ -55,7 +55,7 @@ module "management_subnet" {
 }
 
 module "application_subnet" {
-    source = "./modules/network/private_subnet"
+    source = "git@github.com:nmedija/terraform-modules.git//network/private_subnet"
 
     subnet_prefix = "application"
     vpc_id = "${module.vpc.vpc_id}"
@@ -67,7 +67,7 @@ module "application_subnet" {
 }
 
 module "storage_subnet" {
-    source = "./modules/network/private_subnet"
+    source = "git@github.com:nmedija/terraform-modules.git//network/private_subnet"
 
     subnet_prefix = "storage"
     vpc_id = "${module.vpc.vpc_id}"
@@ -82,7 +82,7 @@ module "storage_subnet" {
 # bastion host
 # ------------
 module "bastion" {
-    source = "./modules/network/bastion"
+    source = "git@github.com:nmedija/terraform-modules.git//network/bastion"
 
     environment = "${var.environment}"
     vpc_id = "${module.vpc.vpc_id}"
