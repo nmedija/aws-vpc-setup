@@ -1,11 +1,12 @@
 # aws-vpc-setup
 An example of using Terraform to setup an AWS VPC
 
-This contains modules to create:
-1. Private Subnets
-2. Public Subnets
-3. NAT Gateways
-4. Bastion Host
+This relies on [terraform-modules](https://github.com/nmedija/terraform-modules) to create:
+1. VPC
+2. Private Subnets
+3. Public Subnets
+4. NAT Gateways
+5. Bastion Host
 
 ## Pre-requisites
 - Terraform
