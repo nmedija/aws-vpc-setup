@@ -1,7 +1,7 @@
 # aws-vpc-setup
 An example of using Terraform to setup an AWS VPC
 
-This contains modules to create the an AWS VPC with:
+This contains modules to create:
 1. Private Subnets
 2. Public Subnets
 3. NAT Gateways
@@ -24,11 +24,11 @@ export AWS_PROFILE=terraform-admin
 ```
 ./bootstrap.bash
 ```
-4. Run `terraform plan` command
+4. Run the `plan` command
 ```
 ./tf.bash plan
 ```
-5. Run 'terraform apply' command
+5. Run the `apply` command
 ```
 ./tf.bash apply
 ```
