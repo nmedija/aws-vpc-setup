@@ -1,7 +1,7 @@
 # aws-vpc-setup
 An example of using Terraform to setup an AWS VPC
 
-This relies on [terraform-modules](https://github.com/nmedija/terraform-modules) to create:
+This relies on [terraform-modules-aws](https://github.com/nmedija/terraform-modules-aws) to create:
 1. VPC
 2. Private Subnets
 3. Public Subnets
