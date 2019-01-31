@@ -3,29 +3,29 @@ variable "aws_access_key" { }
 variable "aws_secret_key" { }
 
 variable "aws_region" {
-    default = "us-east-1"
+  default = "us-east-1"
 }
 
 variable "environment" {
-    default = "staging"
+  default = "staging"
 }
 
 variable "public_subnets" {
-    type = "map"
+  type = "map"
 }
 
 variable "vpc_cidr" { }
 
 variable "management_subnets" {
-    type = "map"
+  type = "map"
 }
 
 variable "application_subnets" {
-    type = "map"
+  type = "map"
 }
 
 variable "storage_subnets" {
-    type = "map"
+  type = "map"
 }
 
 // NOTE: NAT gateways automatically cretes EIPs. Make sure the number of
