@@ -6,15 +6,30 @@ output "Environment" {
 CONFIG
 }
 
-output "Network" {
-  value = <<CONFIG
+output "vpc_id" {
+  value = "${module.vpc.vpc_id}"
+}
 
-  vpc_id:              ${module.vpc.vpc_id}
-  vpc_cidr:            ${module.vpc.vpc_cidr}
-  public_subnets:      ${join("\n                       ", formatlist("%s", module.public_subnet.subnet_ids))}
-  management_subnets:  ${join("\n                       ", formatlist("%s", module.management_subnet.subnet_ids))}
-  application_subnets: ${join("\n                       ", formatlist("%s", module.application_subnet.subnet_ids))}
-  storage_subnets:     ${join("\n                       ", formatlist("%s", module.storage_subnet.subnet_ids))}
-  bastion_public_ip    ${module.bastion.public_ip}
-CONFIG
+output "vpc_cidr" {
+  value = "${module.vpc.vpc_cidr}"
+}
+
+output "public_subnet_ids" {
+  value = "${module.public_subnet.subnet_ids}"
+}
+
+output "management_subnet_ids" {
+  value = "${module.management_subnet.subnet_ids}"
+}
+
+output "application_subnet_ids" {
+  value = "${module.application_subnet.subnet_ids}"
+}
+
+output "storage_subnet_ids" {
+  value = "${module.storage_subnet.subnet_ids}"
+}
+
+output "bastion_public_ip" {
+  value = "${module.bastion.public_ip}"
 }
